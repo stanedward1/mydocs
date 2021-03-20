@@ -111,6 +111,8 @@ select order_id, orders.customer_id, first_name, last_name
 from orders
 join customers c
 	on orders.customer_id = c.customer_id    
+	
+# 关联的表可以使用join on来进行操作
 ```
 
  
