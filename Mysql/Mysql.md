@@ -2,11 +2,23 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [3小时Mysql链接](#3%E5%B0%8F%E6%97%B6mysql%E9%93%BE%E6%8E%A5)
+- [3小时Mysql入门](#3%E5%B0%8F%E6%97%B6mysql%E5%85%A5%E9%97%A8)
   - [sql语句中<>与!=作用一样](#sql%E8%AF%AD%E5%8F%A5%E4%B8%AD%E4%B8%8E%E4%BD%9C%E7%94%A8%E4%B8%80%E6%A0%B7)
   - [REGEXP--正则](#regexp--%E6%AD%A3%E5%88%99)
   - [NULL](#null)
   - [ORDER BY](#order-by)
+  - [LIMIT](#limit)
+  - [JOIN](#join)
+  - [LEFT_JOIN&RIGHT_JOIN](#left_joinright_join)
+  - [USING](#using)
+  - [NATURAL JOIN](#natural-join)
+  - [CROSS JOIN](#cross-join)
+  - [UNION](#union)
+  - [INSERT INTO](#insert-into)
+  - [last_insert_id](#last_insert_id)
+  - [CREATE](#create)
+  - [UPDATE](#update)
+  - [DELETE](#delete)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -115,4 +127,143 @@ join customers c
 # 关联的表可以使用join on来进行操作
 ```
 
- 
+##  LEFT_JOIN&RIGHT_JOIN
+
+```sql
+# 左连接和右连接
+# 简单理解就是满足左边条件的保存，右边可以为空；反过来也一样
+# 两张表的数据都显示了，但是缺少的不显示
+
+SELECT * FROM student s LEFT JOIN class c ON s.class_id = c.id
+
+# 获取所有的产品信息，包括从没订购的产品也会显示
+select *
+from products p
+left join order_items oi
+	on p.product_id = oi.product_id
+	
+select 
+	c.customer_id,
+	c.first_name,
+	o.order_id,
+	sh.name AS shipper
+from customers c
+left join orders o
+	on c.customer_id = o.customer_id
+left join shippers sh
+	on o.shipper_id = sh.shipper_id
+ order by c.customer_id
+```
+
+## USING
+
+```sql
+# o.customer_id = c.customer_id
+# 0.shipper_id = sh.shipper_id
+select 
+	o.order_id
+	c.first_name
+	sh.name as shipper
+from orders o
+join customers c
+	using (customer_id)
+join shippers sh
+	using (shipper_id)
+```
+
+## NATURAL JOIN
+
+```sql
+# 自然关联，数据库去猜你要那些公共列（字段）
+select 
+	o.order_id
+	c.first_name
+	sh.name as shipper
+from orders o
+natural join customers c
+```
+
+## CROSS JOIN
+
+```sql
+select 
+	o.order_id
+	p.name
+from customers c
+cross join products p
+
+equals
+
+select 
+	o.order_id
+	p.name
+from customers c, products p 
+```
+
+## UNION
+
+```
+# 多张表的连接
+```
+
+## INSERT INTO
+
+```sql
+insert into customers
+values (DEFAULT, 'john', 'smith', NULL)
+
+insert into customers()
+values (DEFAULT, 'john', 'smith', NULL)
+
+insert into shippers (name)
+values ("asdf"),
+		("asdjf")
+```
+
+## last_insert_id
+
+```sql
+# 字面意思，返回一个最后的id
+insert into order_items
+values (LAST_INSERT_ID(),1,2,3)
+```
+
+## CREATE
+
+```sql
+# 新建一个表，数据as same as orders
+create table orders_archived as
+select * from orders
+
+# 复制一部分数据
+insert into orders_archived as
+select * from orders
+where ……
+```
+
+## UPDATE
+
+```sql
+update invoices
+set payment_total = 10, payment_date = '2021-09-09'
+where invoice_id = 1
+
+update invoices
+set payment_total = 10, payment_date = '2021-09-09'
+where invoice_id = (3,4)
+
+update invoices
+set payment_total = 10, payment_date = '2021-09-09'
+where invoice_id = (
+					select client_id
+					from clients
+					where state in ('ca','ny')) 
+```
+
+## DELETE
+
+```sql
+delete from invoices
+where client_id=1
+```
+
