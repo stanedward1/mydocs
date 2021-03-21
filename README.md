@@ -1,6 +1,6 @@
 # mydocs
 
-(Ruby)[https://github.com/stanedward1/mydocs/tree/main/Ruby]
+[Ruby](https://github.com/stanedward1/mydocs/tree/main/Ruby)
 
 ## 视频教程
 
