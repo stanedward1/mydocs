@@ -1,3 +1,24 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [数组](#%E6%95%B0%E7%BB%84)
+  - [数组的创建](#%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9B%E5%BB%BA)
+  - [索引的使用](#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BD%BF%E7%94%A8)
+  - [作为集合与作为列的数组](#%E4%BD%9C%E4%B8%BA%E9%9B%86%E5%90%88%E4%B8%8E%E4%BD%9C%E4%B8%BA%E5%88%97%E7%9A%84%E6%95%B0%E7%BB%84)
+  - [主要的数组方法](#%E4%B8%BB%E8%A6%81%E7%9A%84%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95)
+  - [处理数组中的元素](#%E5%A4%84%E7%90%86%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0)
+  - [同时访问多个数组](#%E5%90%8C%E6%97%B6%E8%AE%BF%E9%97%AE%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%BB%84)
+- [hash](#hash)
+  - [Hash的创建](#hash%E7%9A%84%E5%88%9B%E5%BB%BA)
+  - [值的获取与设定](#%E5%80%BC%E7%9A%84%E8%8E%B7%E5%8F%96%E4%B8%8E%E8%AE%BE%E5%AE%9A)
+  - [对Hash的查看](#%E5%AF%B9hash%E7%9A%84%E6%9F%A5%E7%9C%8B)
+  - [键值的删除](#%E9%94%AE%E5%80%BC%E7%9A%84%E5%88%A0%E9%99%A4)
+  - [初始化散列](#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%95%A3%E5%88%97)
+  - [合并散列](#%E5%90%88%E5%B9%B6%E6%95%A3%E5%88%97)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 **Array(数组):顺序且有序的集合类型，Ruby中使用方括号来获取数组元素，索引使用数字，从0开始**
 
 **Hash(哈希or散列):使用键值操作的集合类型，哈希中的索引不局限于使用数字，Hash中的索引也被称为键，使用花括号包含键值对的形式表示**
