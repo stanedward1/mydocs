@@ -4,7 +4,9 @@
 
 ## 视频教程
 
-[mysql](https://github.com/stanedward1/mydocs/blob/main/Mysql/Mysql.md)
+[Mysql](https://github.com/stanedward1/mydocs/blob/main/Mysql/Mysql.md)
+
+[Vue](https://github.com/stanedward1/mydocs/blob/main/Vue/readme.md)
 
 ## 书籍
 
