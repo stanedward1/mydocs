@@ -2,15 +2,19 @@
 
 [Ruby](https://github.com/stanedward1/mydocs/tree/main/Ruby)
 
-## 视频教程
+## Videos
 
 [Mysql](https://github.com/stanedward1/mydocs/blob/main/Mysql/Mysql.md)
 
 [Vue](https://github.com/stanedward1/mydocs/blob/main/Vue/readme.md)
 
-## 书籍
+## Books
 
-[《Computer Networking A TOP-DOWN APPROACH》（计算机网络 自顶向下方法）](https://github.com/stanedward1/mydocs/blob/main/Computer%20Networking%20A%20TOP-DOWN%20APPROACH/README.md)
+[《Computer Networking A TOP-DOWN APPROACH》](https://github.com/stanedward1/mydocs/blob/main/Computer%20Networking%20A%20TOP-DOWN%20APPROACH/README.md)
 
-##  文档
+[《Ruby Programming 5》](https://github.com/stanedward1/mydocs/tree/main/Ruby/Ruby Programming 5)
+
+[《Metaprogramming Ruby 2》 ](https://github.com/stanedward1/mydocs/tree/main/Ruby/Metaprogramming Ruby 2)
+
+##  Documents
 [Rails_guides](https://github.com/stanedward1/mydocs/tree/main/Rails_guides_docs)
