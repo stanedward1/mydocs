@@ -18,3 +18,5 @@
 
 ##  Documents
 [Rails_guides](https://github.com/stanedward1/mydocs/tree/main/Rails_guides_docs)
+
+[Django_Rest_framework](https://github.com/stanedward1/mydocs/tree/main/Django_Rest_framework)

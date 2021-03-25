@@ -24,4 +24,6 @@
   => Developer
   ```
 
-  
+- ## scope&unscope&unscoped
+
+- ## .constantize
