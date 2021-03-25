@@ -19,7 +19,18 @@ irb(main):007:0> end
 irb(main):008:0> B.ancestors
 => [B, A, Object, Kernel, BasicObject]
 
-使用extend
+使用extend,继承其他module，一般使用extend继承ruby自带的module&gem包的module
+irb(main):001:1* module A
+irb(main):002:1*   "this is A"
+irb(main):003:0> end
+=> "this is A"
+irb(main):004:1* class B
+irb(main):005:1*   extend A
+irb(main):006:1*   "this is B"
+irb(main):007:0> end
+=> "this is B"
+irb(main):008:0> B.ancestors
+=> [B, Object, Kernel, BasicObject]
 
 ```
 
@@ -28,8 +39,6 @@ irb(main):008:0> B.ancestors
 ## 动态创建对象&动态调用方法
 
 ```
- 
-
 
 动态调用方法，作用是可以消除繁复的代码
 and
@@ -64,3 +73,19 @@ last but not least ----
 
 
 ## 动态执行脚本
+
+```ruby
+
+# eval
+代码执行最直接的方法，也是最直接的方式，就是使用eval
+irb(main):009:0> eval("3-1")
+=> 2
+
+# instance_eval
+将暂时的变化带入对象的上下文中
+
+# class_eval(module_eval)
+临时性的进入类定义块的上下文
+
+```
+
