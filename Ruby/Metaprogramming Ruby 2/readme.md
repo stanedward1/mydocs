@@ -38,7 +38,53 @@ irb(main):008:0> B.ancestors
 
 ## 动态创建对象&动态调用方法
 
-```
+```ruby
+动态创建对象，已知，可以把方法，类看成是对象
+所以----
+1.动态创建方法----define_method
+一般会使用define_method结合method_missing来编写DRY代码！也就是把重复的代码干掉！
+
+2.7.2 :001 > class Developer
+2.7.2 :002 >   
+2.7.2 :003 >   def coding_frontend
+2.7.2 :004 >     p "writing frontend"
+2.7.2 :005 >   end
+2.7.2 :006 >   
+2.7.2 :007 >   def coding_backend
+2.7.2 :008 >     p "writing backend"
+2.7.2 :009 >   end
+2.7.2 :010 >   
+2.7.2 :011 > end
+ => :coding_backend 
+2.7.2 :012 > developer = Developer.new
+ => #<Developer:0x00007f9168453d68> 
+2.7.2 :013 > developer.coding_frontend
+"writing frontend"
+ => "writing frontend" 
+2.7.2 :014 > developer.coding_backend
+"writing backend"
+ => "writing backend" 
+2.7.2 :015 > class Developer
+2.7.2 :016 >   
+2.7.2 :017 >   ["frontend", "backend"].each do |method|
+2.7.2 :018 >     define_method "coding_#{method}" do
+2.7.2 :019 >     p "writing " + method.to_s
+2.7.2 :020 >     end
+2.7.2 :021 >   end
+2.7.2 :022 >   
+2.7.2 :023 > end
+ => ["frontend", "backend"] 
+2.7.2 :024 > developer = Developer.new
+ => #<Developer:0x00007f916c9be178> 
+2.7.2 :025 > developer.coding_frontend
+"writing frontend"
+ => "writing frontend" 
+2.7.2 :026 > developer.coding_backend
+"writing backend"
+ => "writing backend"
+
+
+2.动态创建类----class_eval&instance_eval
 
 动态调用方法，作用是可以消除繁复的代码
 and
