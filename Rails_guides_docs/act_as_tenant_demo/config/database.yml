@@ -1,0 +1,29 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  username: root
+  password:
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+
+development:
+  primary:
+    <<: *default
+    database: tenant_db
+  primary_replica:
+    <<: *default
+    database: tenant_development
+
+
+
+
+test:
+  <<: *default
+  database: tenant_db_test
+
+
+production:
+  <<: *default
+  database: tenant_db_deploy
