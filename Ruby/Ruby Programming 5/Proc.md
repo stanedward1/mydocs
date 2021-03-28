@@ -1,3 +1,22 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Proc类](#proc%E7%B1%BB)
+  - [Proc类是个啥](#proc%E7%B1%BB%E6%98%AF%E4%B8%AA%E5%95%A5)
+    - [创建Proc对象](#%E5%88%9B%E5%BB%BAproc%E5%AF%B9%E8%B1%A1)
+      - [Proc.new()](#procnew)
+      - [proc{}](#proc)
+    - [Lambda表达式](#lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F)
+    - [to_proc方法](#to_proc%E6%96%B9%E6%B3%95)
+    - [Proc的实例方法](#proc%E7%9A%84%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95)
+    - [prc.arrity](#prcarrity)
+    - [prc.parameters](#prcparameters)
+    - [prc.source_location](#prcsource_location)
+    - [Proc&Lambda](#proclambda)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Proc类
 
 ## Proc类是个啥

@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [附录（思考）](#%E9%99%84%E5%BD%95%E6%80%9D%E8%80%83)
+    - [super keyword](#super-keyword)
+    - [ruby中的简写](#ruby%E4%B8%AD%E7%9A%84%E7%AE%80%E5%86%99)
+    - [：：](#)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 附录（思考）
 
 - ## instance methods & class methods
