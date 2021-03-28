@@ -28,11 +28,43 @@
 
   字面意思：作用域，取消作用，全部取消作用
 
-  那么，下一步来仔细分析一下！！
+  那么，下一步来看看例子！！
 
-  
+  ```ruby
+  class Book < ApplicationRecord
+    scope :out_of_print, -> { where(out_of_print: true) }
+  end
+  ```
+
+  等价于
+
+  ```ruby
+  class Book < ApplicationRecord
+      def self.out_of_print
+          where(out_of_print: true)}
+  	end
+  end
+  ```
+
+  ```ruby
+  Book.where('id > 100').limit(20).order('id desc').unscope(:order)
+  ```
+
+  ```sql
+  SELECT * FROM books WHERE id > 100 LIMIT 20
+  ```
+
+  关于unscope，有个gem包，叫做——acts_as_tenant,使用这个gem包时，需要在model层中进行注册，然后default_scope起作用，一个系统内的一个用户就无法获取另外一个用户的数据了，假如想要获取其他人的数据，这时候unscoped就起作用了！
+
+  举个栗子！！！栗子！！！
+
+  ```ruby
+  Article.unscoped.create(account_id:self.id)
+  ```
 
 - ## .constantize
+
+  主要作用是把一个字符串创建为一个对象，比如说一个类
 
 - ### *args&**args
 
@@ -168,3 +200,19 @@ last but not least
 super()的作用是：super找到父类的方法时，可能传的参数数量对不上，这时候就可以使用super()
 ```
 
+### ruby中的简写
+
+1. 方法调用的最外层括号可以省略
+2. 函数最后一行默认有return
+3. hash最外面的{}在大多数情况下可以省略
+4. 调用block，就是proc里说的&:
+5. module不能被new，可以被include
+6. do end as same as {}
+
+### ：：
+
+这个：：可以去拿方法内的常量
+
+and
+
+去操作类方法
