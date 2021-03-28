@@ -150,3 +150,95 @@ irb(main):096:1*   end
 irb(main):097:0> end
 ```
 
+### prc.arrity
+
+此方法可以返回作为call方法的参数的块变量的个数，以“|*args|”的形式指定块变量时，返回-1
+
+```ruby
+irb(main):004:0> prc0 = Proc.new{nil}
+irb(main):005:0> prc1 = Proc.new{|a| a}
+irb(main):006:0> prc2 = Proc.new{|a,b| a+b}
+irb(main):007:0> prc3 = Proc.new{|a,b,c| a+b+c}
+irb(main):008:0> prc4 = Proc.new{|*args| args}
+irb(main):009:0> prc0.arity
+=> 0
+irb(main):010:0> prc1.arity
+=> 1
+irb(main):011:0> prc2.arity
+=> 2
+irb(main):012:0> prc3.arity
+=> 3
+irb(main):013:0> prc4.arity
+=> -1
+```
+
+### prc.parameters
+
+使用此方法可以返回“[种类，变量名]”形式的数组的列表
+
+```ruby
+irb(main):015:0> prc0.parameters
+=> []
+irb(main):016:0> prc1.parameters
+=> [[:opt, :a]]
+irb(main):017:0> prc2.parameters
+=> [[:opt, :a], [:opt, :b]]
+irb(main):018:0> prc3.parameters
+=> [[:opt, :a], [:opt, :b], [:opt, :c]]
+irb(main):019:0> prc4.parameters
+=> [[:rest, :args]]
+```
+
+### prc.source_location
+
+返回定义prc的程序的位置，返回值为“[代码文件名，行编号]”形式的数组
+
+```ruby
+irb(main):020:0> prc0.source_location
+=> ["(irb)", 4]
+irb(main):021:0> prc1.source_location
+=> ["(irb)", 5]
+irb(main):022:0> prc2.source_location
+=> ["(irb)", 6]
+```
+
+```shell
+irb(main):024:0> to_class.call("test")
+=> String
+irb(main):025:0> to_class.call(123)
+=> Integer
+irb(main):026:0> to_class.call(2**100)
+=> Integer
+```
+
+
+
+### Proc&Lambda
+
+1. 对参数的容忍程度不同，lambda比较严格，Proc比较宽松，数量有差异也不会报错
+
+2. 回传的scope不同，Proc里面的return会结束整个method，而lambda的return只会结束lambda本身。
+
+   ```shell
+   irb(main):061:1* def method_proc
+   irb(main):062:1*   thing = Proc.new{ return 1 }
+   irb(main):063:1*   thing.call
+   irb(main):064:1*   puts "hi proc"
+   irb(main):065:1*   return 2
+   irb(main):066:0> end
+   => :method_proc
+   irb(main):067:1* def method_lambda
+   irb(main):068:1*   thing = lambda{ return 1 }
+   irb(main):069:1*   thing.call
+   irb(main):070:1*   puts "hi lambda"
+   irb(main):071:1*   return 2
+   irb(main):072:0> end
+   => :method_lambda
+   irb(main):073:0> method_proc
+   => 1
+   irb(main):074:0> method_lambda
+   hi lambda
+   => 2
+   ```
+
+   
