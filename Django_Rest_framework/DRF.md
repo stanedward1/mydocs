@@ -2,25 +2,27 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [视频资源](#%E8%A7%86%E9%A2%91%E8%B5%84%E6%BA%90)
+- [学习资源](#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90)
 - [DRF实现增删改查标准接口](#drf%E5%AE%9E%E7%8E%B0%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E6%A0%87%E5%87%86%E6%8E%A5%E5%8F%A3)
 - [序列化器的序列化操作](#%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%93%8D%E4%BD%9C)
 - [定义序列化器的序列化操作及关联序列化](#%E5%AE%9A%E4%B9%89%E5%BA%8F%E5%88%97%E5%8C%96%E5%99%A8%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E6%93%8D%E4%BD%9C%E5%8F%8A%E5%85%B3%E8%81%94%E5%BA%8F%E5%88%97%E5%8C%96)
 - [反序列化的操作](#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E6%93%8D%E4%BD%9C)
 - [django中jwt的操作&RBAC（基于角色的权限控制）](#django%E4%B8%ADjwt%E7%9A%84%E6%93%8D%E4%BD%9Crbac%E5%9F%BA%E4%BA%8E%E8%A7%92%E8%89%B2%E7%9A%84%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6)
-- [企业中的Web项目类型](#%E4%BC%81%E4%B8%9A%E4%B8%AD%E7%9A%84web%E9%A1%B9%E7%9B%AE%E7%B1%BB%E5%9E%8B)
+- [企业中的Web项目类型及项目开发流程](#%E4%BC%81%E4%B8%9A%E4%B8%AD%E7%9A%84web%E9%A1%B9%E7%9B%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ![image-20210401155834178](imgs/image-20210401155834178.png)
 
-# 视频资源
+# 学习资源
 
-认为不错一些视频资源
+认为不错的一些学习资源
 
 [黑马02-Django REST Framework框架学习](https://www.bilibili.com/video/BV1Sz4y1o7E8?p=24&spm_id_from=pageDriver)
 
 [老男孩Python全栈开发29期全套](https://www.bilibili.com/video/BV11z4y1o79Q?p=4)
+
+[刘清政的博客](http://www.liuqingzheng.top/)
 
 # DRF实现增删改查标准接口
 
@@ -102,7 +104,11 @@
 
 ![image-20210401173726027](imgs/image-20210401173726027.png)
 
-# 企业中的Web项目类型
+# 企业中的Web项目类型及项目开发流程
 
 ![image-20210401173910353](imgs/image-20210401173910353.png)
+
+![image-20210401174438774](imgs/image-20210401174438774.png)
+
+
 
