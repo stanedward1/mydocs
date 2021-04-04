@@ -45,7 +45,11 @@
 
 新增一个分区，然后指向这个新分区，跟软链接一样
 
-# Docker基础篇之快速上手
+# [Docker基础篇之快速上手](https://www.bilibili.com/video/BV1Ls411n7mx)
 
 ![image-20210404013220064](imgs/image-20210404013220064.png)
+
+![image-20210404014420874](imgs/image-20210404014420874.png)
+
+![image-20210404014943632](imgs/image-20210404014943632.png)
 
