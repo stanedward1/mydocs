@@ -1,3 +1,142 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [方法：](#%E6%96%B9%E6%B3%95)
+  - [序言](#%E5%BA%8F%E8%A8%80)
+  - [3.1 代码繁复的问题](#31-%E4%BB%A3%E7%A0%81%E7%B9%81%E5%A4%8D%E7%9A%84%E9%97%AE%E9%A2%98)
+    - [3.1.1 老系统](#311-%E8%80%81%E7%B3%BB%E7%BB%9F)
+    - [3.1.2 代码的优雅化🐶](#312-%E4%BB%A3%E7%A0%81%E7%9A%84%E4%BC%98%E9%9B%85%E5%8C%96)
+  - [3.2 动态方法](#32-%E5%8A%A8%E6%80%81%E6%96%B9%E6%B3%95)
+    - [3.2.1 动态调用方法](#321-%E5%8A%A8%E6%80%81%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95)
+    - [3.2.2 动态定义方法](#322-%E5%8A%A8%E6%80%81%E5%AE%9A%E4%B9%89%E6%96%B9%E6%B3%95)
+    - [3.2.3 重构Computer类](#323-%E9%87%8D%E6%9E%84computer%E7%B1%BB)
+  - [3.3 method_missing方法](#33-method_missing%E6%96%B9%E6%B3%95)
+    - [3.3.1 覆写method_missing方法](#331-%E8%A6%86%E5%86%99method_missing%E6%96%B9%E6%B3%95)
+    - [3.3.2 幽灵方法](#332-%E5%B9%BD%E7%81%B5%E6%96%B9%E6%B3%95)
+- [附录（思考）](#%E9%99%84%E5%BD%95%E6%80%9D%E8%80%83)
+  - [include&extend的使用场景](#includeextend%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF)
+  - [动态创建对象&动态调用方法](#%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%8A%A8%E6%80%81%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95)
+  - [动态执行脚本](#%E5%8A%A8%E6%80%81%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# 方法：
+
+## 序言
+
+**static type checking**
+
+Java——Java的编译器会控制代码之间的交谈，对于每一次方法的调用，编译器都会检查接受对象是否有一个匹配的方法，这就叫做——**静态类型检查**
+
+所以Java也叫做静态语言
+
+**动态语言包括Python&Ruby**
+
+在某个对象上调用特定的方法时，系统不会发出警告，直到真正的调用此方法时，才会提示无法响应调用。
+
+## 3.1 代码繁复的问题
+
+### 3.1.1 老系统
+
+```text
+DS类下面有很多很多方法！都是拿取对应信息的，看起来就很繁复的样子！
+```
+
+### 3.1.2 代码的优雅化🐶
+
+**动态方法**
+
+**method missing**
+
+## 3.2 动态方法
+
+调用一个方法——给一个对象发送一个消息
+
+### 3.2.1 动态调用方法
+
+```ruby
+2.7.2 :008 > class MyClass
+2.7.2 :009 >   def my_method(my_arg)
+2.7.2 :010 >     my_arg * 2
+2.7.2 :011 >   end
+2.7.2 :012 > end
+ => :my_method 
+2.7.2 :013 > obj = MyClass
+ => MyClass 
+2.7.2 :014 > obj = MyClass.new
+ => #<MyClass:0x00007f8d721c8cc8> 
+2.7.2 :015 > obj.send(:my_method,3)
+ => 6 
+2.7.2 :016 > obj.my_method(3)
+ => 6 
+```
+
+**send方法里所调用的方法成为了参数**
+
+**Symbol**是不可修改的，&，特别适合用来表示方法名。
+
+### 3.2.2 动态定义方法
+
+```ruby
+2.7.2 :001 > class MyClass
+2.7.2 :002 >   define_method :my_method do | my_arg|
+2.7.2 :003 >   	my_arg*3
+2.7.2 :004 >   end
+2.7.2 :005 > end
+ => :my_method 
+2.7.2 :006 > obj = MyClass.new
+ => #<MyClass:0x00007f8d6f67a990> 
+2.7.2 :007 > obj.my_method(2)
+ => 6 
+```
+
+这种在运行时定义方法的技术称为动态方法——**Dynamic Method**
+
+### 3.2.3 重构Computer类
+
+核心就是接收String || Symbol 作为参数，并调用方法。
+
+## 3.3 method_missing方法
+
+什么事动态语言，show me the code
+
+```ruby
+2.7.2 :020 > class Lawyer
+2.7.2 :021 > end
+ => nil 
+2.7.2 :022 > nick = Lawyer.new
+ => #<Lawyer:0x00007f8d6bce27f0> 
+2.7.2 :023 > nick.talk_simple
+Traceback (most recent call last):
+        1: from (irb):23
+NoMethodError (undefined method `talk_simple' for #<Lawyer:0x00007f8d6bce27f0>)
+```
+
+```ruby
+2.7.2 :025 > Lawyer.ancestors
+ => [Lawyer, ActiveSupport::Dependencies::ZeitwerkIntegration::RequireDependency, ActiveSupport::ForkTracker::CoreExtPrivate, ActiveSupport::ForkTracker::CoreExt, ActiveSupport::ToJsonWithActiveSupportEncoder, Object, JSON::Ext::Generator::GeneratorMethods::Object, ActiveSupport::Dependencies::Loadable, ActiveSupport::Tryable, Kernel, BasicObject] 
+```
+
+### 3.3.1 覆写method_missing方法
+
+```ruby
+2.7.2 :026 > class Lawyer
+2.7.2 :027 >   def method_missing(method, *args)
+2.7.2 :028 >     puts "You called: #{method} (#{args.join(',')})"
+2.7.2 :029 >   end
+2.7.2 :030 > end
+ => :method_missing 
+2.7.2 :032 > lawyer = Lawyer.new
+ => #<Lawyer:0x00007f8d6be08710> 
+2.7.2 :034 > lawyer.send(:talk_simple,2)
+You called: talk_simple (2)
+```
+
+### 3.3.2 幽灵方法
+
+因为要调用的方法其实不存在，所以也叫它幽灵方法。
+
 # 附录（思考）
 
 ## include&extend的使用场景
