@@ -137,6 +137,51 @@ You called: talk_simple (2)
 
 因为要调用的方法其实不存在，所以也叫它幽灵方法。
 
+## 3.4 消灭bug
+
+```shell
+2.7.2 :121 > class Roulette
+2.7.2 :122 >   def method_missing(name, *args)
+2.7.2 :123 >     person = name.to_s.capitalize
+2.7.2 :124 >     3.times do
+2.7.2 :125 >       number = rand(10) + 1
+2.7.2 :126 >       puts "#{number}----"
+2.7.2 :127 >     end
+2.7.2 :128 >     puts  "#{person} got a #{number}"
+2.7.2 :129 >   end
+2.7.2 :130 > end
+```
+
+![image-20210518225149082](img/image-20210518225149082.png)
+
+```shell
+2.7.2 :156 > class Roulette
+2.7.2 :157 >   def method_missing(name, *args)
+2.7.2 :158 >     person = name.to_s.capitalize
+2.7.2 :159 >     super unless %w[Bob Tim Longbiu].include? p
+erson
+2.7.2 :160 >     number = 0
+2.7.2 :161 >     3.times do
+2.7.2 :162 >       number = rand(10) +1
+2.7.2 :163 >       puts "#{number}---"
+2.7.2 :164 >     end
+2.7.2 :165 >     "#{person} got a #{number}"
+2.7.2 :166 >   end
+2.7.2 :167 > end
+```
+
+## 3.5 白板类
+
+调用类的某个方法返回nil时，可以使用此条语句列出Object中所有以d开头的实例方法
+
+```
+Object.instance_methods.grep /^d/
+```
+
+### 3.5.1 BasicObject
+
+继承BasicObject类是最简单的定义白板类的方法。
+
 # 附录（思考）
 
 ## include&extend的使用场景
